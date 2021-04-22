@@ -23,4 +23,9 @@ module.exports = async (client) => {
     await require('./cache/lr')(client);
     ora_lrCache.stop(); ora_lrCache.clear();
     console.log(`${chalk.gray('[PROC]')} >> ${chalk.blueBright(`Cached`)} ${chalk.white(`${client.misc.cache.lxp.hasLevelRoles.length}`)} ${chalk.blueBright(`guilds with Level Roles enabled.`)}`);
+
+    let ora_mCache = ora("Caching Mutes...").start();
+    await require('./cache/mute')(client);
+    ora_mCache.stop(); ora_mCache.clear();
+    console.log(`${chalk.gray('[PROC]')} >> ${chalk.blueBright(`Cached`)} ${chalk.white(`${client.misc.cache.mute.size}`)} ${chalk.blueBright(`mutes`)}`);
 };

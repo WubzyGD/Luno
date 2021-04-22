@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const Mute = require('../../models/mute');
 
-const muted = '717419538970312755';
+const muted = '834613812271251476';
 
 module.exports = {
     name: "mute",
@@ -29,6 +29,7 @@ module.exports = {
 
         if (person.roles.cache.has(muted)) {return message.reply("That person is already muted!");}
         if (message.guild.roles.cache.get(muted).position <= person.roles.highest.position) {return message.reply("I don't have permissions to mute that member as their highest role is above or equal to the muted role!");}
+        if (person.roles.highest.positon >= message.guild.roles.cache.get(muted)) {return message.reply("You can't mute that member as their highest role is higher than the muted role (in other words they are a moderator or admin of the server)");}
 
         let udur = args[1] ? args[1].toLowerCase().trim() : '1h';
         let time;
@@ -46,9 +47,9 @@ module.exports = {
         if (args[2]) {args.shift(); args.shift(); reason = args.join(" ").trim();}
 
         try {
-            person.roles.add("717419538970312755")
+            person.roles.add("834613812271251476")
                 .then(() => message.channel.send("I've muted that member!")
-                    .then(() => message.guild.channels.cache.get('830600344668602409').send(new Discord.MessageEmbed()
+                    .then(() => message.guild.channels.cache.get('834611202377515018').send(new Discord.MessageEmbed()
                         .setAuthor(message.member.displayName, message.author.avatarURL())
                         .setTitle("Member Muted!")
                         .setDescription(`<@${person.id}> was muted!`)

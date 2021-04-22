@@ -21,9 +21,26 @@ module.exports = {
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
 
-        if (incl(["heya luno", "hi luno", "sup luno", "what's up luno", "whats up luno"])) {
-            const r = ["Heya there Crescent!", "Hi cutie ^^", "Sup qt ;)", "What's up my favorite femboy?"];
-            return message.channel.send(r[Math.floor(Math.random() * r.length)]);
+        if (incl(["heya luno", "hi luno", "sup luno", "what's up luno", "whats up luno", "hey luno", "hai luno", "howdy luno"])) {
+            const r = ["Heya there Crescent! How are ya?", "Hi cutie ^^ What's up?", "Sup qt ;) Hru?", "What's up my favorite femboy?"];
+            await message.channel.send(r[Math.floor(Math.random() * r.length)]);
+            try {
+                let content = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {max: 1, errors: ['time'], time: 60000, maxMatches: 1});
+                content = content.first().content;
+                if (incl(["not so good", "not good", "not pog"], content.toLowerCase())) {
+                    const r2 = ["Aw :( I sowwy", "y sadge moment?"];
+                    await message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
+                    try {
+                        content = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {max: 1, errors: ['time'], time: 60000, maxMatches: 1});
+                        content = content.first().content;
+                        
+                    } catch {}
+                }
+                if (content.toLowerCase().includes("good")) {
+                    const r2 = ["That's good to hear qt ^^", "Me too!", ":) Glad to know my favorite femboy is doing well!"];
+                    return message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
+                }
+            } catch {}
         }
     }
 }

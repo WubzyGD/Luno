@@ -7,6 +7,7 @@ const ora = require('ora');
 const GuildSettings = require('../models/guild');
 const BotDataSchema = require('../models/bot');
 const LogData = require('../models/log');
+const Mute = require('../models/mute');
 
 const siftStatuses = require('../util/siftstatuses');
 const localXPCacheClean = require('../util/lxp/cacheloop');
@@ -67,6 +68,34 @@ module.exports = async client => {
 		}
 	}};
 	setPL();
+
+	const muteLoop = async () => {
+	    let ct = new Date().getTime();
+	    let mute; for (mute of Array.from(client.misc.cache.mute.keys())) {
+	        if (ct >= client.misc.cache.mute.get(mute)) {
+				if (client.guilds.cache.get(client.misc.neptune).members.cache.has(mute)) {
+					let mutedata = await Mute.findOne({uid: mute});
+					client.guilds.cache.get(client.misc.neptune).members.cache.get(mute).roles.remove('834613812271251476')
+						.then(() => {
+							let muten = client.guilds.cache.get(client.misc.neptune).members.cache.get(mute).displayName;
+							client.guilds.cache.get(client.misc.neptune).channels.cache.get('834611202377515018').send(new Discord.MessageEmbed()
+								.setTitle("Member Automatically Unmuted")
+								.setDescription(`<@${mute}>${muten.endsWith('s') ? "'" : "'s"} mute time has ended, and I've unmuted them.`)
+								.addField("Muting Moderator", `<@${mutedata.mutedBy}>`, true)
+								.addField("Reason", mutedata.reason.length ? mutedata.reason : 'No reason provided', true)
+								.setColor('c77dff')
+								.setFooter("Luno", client.user.avatarURL())
+								.setTimestamp()
+							);
+						});
+					}
+	            await Mute.deleteOne({uid: mute});
+				client.misc.cache.mute.delete(mute);
+	        }
+	    }
+	}
+	muteLoop();
+	setInterval(muteLoop, 60000);
 
 	siftStatuses();
 	setInterval(() => {setPL(); siftStatuses(client, null);}, 120000);

@@ -22,9 +22,11 @@ client.misc = {
             enabled: [],
             xp: {},
             hasLevelRoles: []
-        }
+        },
+        mute: new Map()
     },
-    loggers: {}
+    loggers: {},
+    neptune: '691122844339404800'
 };
 
 //const config = require('./config.js');
