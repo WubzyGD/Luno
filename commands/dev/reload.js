@@ -22,7 +22,7 @@ module.exports = {
     async execute(message, msg, args, cmd, prefix, mention, client) {
         if (!args.length) {
             const tu = await UserData.findOne({uid: message.author.id});
-            if (!tu && !tu.developer && message.author.id !== "480535078150340609") {return message.channel.send("You must be a Luno developer in order to do this!");}
+            if ((!tu || !tu.developer) && message.author.id !== "480535078150340609") {return message.channel.send("You must be a Luno developer in order to do this!");}
 
             let commands = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
             let dirSet = new Map();
