@@ -10,10 +10,10 @@ module.exports = {
     },
     async execute(message, msg, args, cmd, prefix, mention, client) {
 
-        const start = message.mentions.members.first().user.username || args[0]
-        const end = message.mentions.members.map(m => m.user.username).splice(1) || args[1]
-        if (!start || !end) return message.channel.send(this.help);
-        let finalName = start.slice(0, Math.floor(start.length / 2))+end.slice(Math.floor(end.length / 2))
+        const start = message.mentions.members.first()
+        const end = message.mentions.members.map(m => m.user.username).splice(1)
+        if (!start && !end || !start || !end) return message.channel.send(this.help);
+        let finalName = `${start.slice(0, Math.floor(start.length / 2))+end.slice(Math.floor(end.length / 2))}`
         const Embed = new Discord.MessageEmbed()
         .setColor("PURPLE")
         .setThumbnail("https://media.discordapp.net/attachments/550550810145325056/834696984605622292/unknown.png?width=551&height=418")
