@@ -13,7 +13,7 @@ module.exports = {
         const start = message.mentions.members.first()
         const end = message.mentions.members.map(m => m.user.username).splice(1) || args[1];
         if (!start && !end || !start || !end) return message.channel.send(this.help);
-        finalName = start.slice(0, Math.floor(start.length / 2))+end.slice(Math.floor(end.length / 2))
+        let finalName = start.slice(0, Math.floor(start.length / 2))+end.slice(Math.floor(end.length / 2))
         const Embed = new Discord.MessageEmbed()
         .setColor("PURPLE")
         .setThumbnail("https://media.discordapp.net/attachments/550550810145325056/834696984605622292/unknown.png?width=551&height=418")
