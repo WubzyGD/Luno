@@ -42,5 +42,26 @@ module.exports = {
                 }
             } catch {}
         }
+
+        if (incl(['gn luno', 'goodnight luno', 'night luno'])) {
+            const r = ["Goodnight! :)", "Night Cres, I hope the server hasn't beckoned your wake for too long.", "I hope you're off to get some good sleep ^^ or perhaps ang is sleepy too? :eyes:"];
+            message.channel.send(`${r[Math.floor(Math.random() * r.length)]} Want me to set your status before you go off?`);
+            let to = false; let sconf;
+            try {sconf = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {time: 15000, errors: ['time'], max: 1});}
+            catch {message.channel.send("Oh, I guess she already went to bed, huh? I'll just... set his status anyways-"); to = true;}
+            if (sconf) {sconf = sconf.first().content.trim().toLowerCase();}
+            if (to || incl(['ye', 'mhm', 'sure'], sconf)) {
+                let w = await UserData.findOne({uid: message.author.id});
+                w.statusclearmode = 'manual';
+                w.statusmsg = "Sleeping";
+                w.statussetat = new Date();
+                let tempDate = new Date();
+                w.statusclearat = tempDate.setHours(tempDate.getHours() + 12);
+                w.statustype = 'dnd';
+                w.save();
+                if (!to) {message.channel.send("Okay! I set your status for you. Get some good sleep; I'll make sure the server's safe for you.");}
+                return;
+            } else {return message.channel.send("Alrighty. Have a good night, my favorite femboy");}
+        }
     }
 }
