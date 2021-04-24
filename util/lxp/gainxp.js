@@ -17,7 +17,7 @@ module.exports = async (client, member, channel) => {
             try {
                 let ch = xp.lvch.length ? channel.guild.channels.cache.get(xp.lvch) : channel;
                 if (ch.partial) {await ch.fetch().catch(() => {});}
-                if (ch && ch.permissionsFor(ch.guild.me.id).has('SEND_MESSAGES')) {ch.send(`<:awoo:560193779764559896> <@${member}> has reached **Level ${x + 1}**!`).catch((e) => {/*console.error(e)*/});}
+                if (ch && ch.permissionsFor(ch.guild.me.id).has('SEND_MESSAGES')) {ch.send(`<:wew:835643715745087529> <@${member}> has reached **Level ${x + 1}**!`).catch((e) => {/*console.error(e)*/});}
                 if (client.misc.cache.lxp.hasLevelRoles.includes(channel.guild.id)) {
                     LR.findOne({gid: channel.guild.id}).then(async lr => {
                         if (!lr) {return;}
