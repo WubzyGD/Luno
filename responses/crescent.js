@@ -63,5 +63,11 @@ module.exports = {
                 return;
             } else {return message.channel.send("Alrighty. Have a good night, my favorite femboy");}
         }
+
+        if (incl['love you', 'wub you', 'love u', 'wub u', 'luv u', 'wub u'] && inc('luno')) {
+            const r = ["uwu //// b-but i'm busy trying to mod right now crescent!", "but what happened to ang?",
+            "i will neither confirm nor deny my feelings for you", ":eyes: :wink:"];
+            return message.channel.send(r[Math.floor(Math.random() * r.length)]);
+        }
     }
 }
