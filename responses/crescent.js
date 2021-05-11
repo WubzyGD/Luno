@@ -48,7 +48,7 @@ module.exports = {
             message.channel.send(`${r[Math.floor(Math.random() * r.length)]} Want me to set your status before you go off?`);
             let to = false; let sconf;
             try {sconf = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {time: 15000, errors: ['time'], max: 1});}
-            catch {message.channel.send("Oh, I guess she already went to bed, huh? I'll just... set his status anyways-"); to = true;}
+            catch {message.channel.send("Oh, I guess she already went to bed, huh? I'll just... set her status anyways-"); to = true;}
             if (sconf) {sconf = sconf.first().content.trim().toLowerCase();}
             if (to || incl(['ye', 'mhm', 'sure'], sconf)) {
                 let w = await UserData.findOne({uid: message.author.id});
@@ -65,7 +65,7 @@ module.exports = {
         }
 
         if (incl(['love you', 'wub you', 'love u', 'wub u', 'luv u', 'wub u']) && inc('luno')) {
-            const r = ["uwu //// b-but i'm busy trying to mod right now crescent!", "but what happened to ang?",
+            const r = ["uwu //// b-but i'm busy trying to mod right now crescent!",
             "i will neither confirm nor deny my feelings for you", ":eyes: :wink:"];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
