@@ -38,7 +38,7 @@ module.exports = {
                 if (command.aliases) {command.aliases.forEach(a => client.aliases.set(a, command.name));}
             }
             cmdspinner.stop(); cmdspinner.clear();
-            console.log(`${chalk.gray('[LOG]')}  >> ${chalk.blue('Loaded all Commands')}`);
+            console.log(`${chalk.gray('[PROC]')} >> ${chalk.blue('Loaded all Commands')}`);
 
             let eventspinner = ora(chalk.blue('Loading Events')).start();
             let eventFilter = fs.readdirSync('./events/').filter(x => x.endsWith('.js'));
@@ -50,7 +50,7 @@ module.exports = {
                 client.on(evtName, evt.bind(null, client));
             }
             eventspinner.stop(); eventspinner.clear();
-            console.log(`${chalk.gray('[LOG]')}  >> ${chalk.blue('Loaded all Events')}`);
+            console.log(`${chalk.gray('[PROC]')} >> ${chalk.blue('Loaded all Events')}`);
 
             let rspspinner = ora(chalk.blue('Loading Commands')).start();
             let responses = fs.readdirSync('./responses').filter(file => file.endsWith('.js'));
@@ -62,7 +62,7 @@ module.exports = {
                 client.responses.commands.set(response.name, response);
             }
             rspspinner.stop(); rspspinner.clear();
-            console.log(`${chalk.gray('[LOG]')}  >> ${chalk.blue('Loaded all Responses')}`);
+            console.log(`${chalk.gray('[PROC]')} >> ${chalk.blue('Loaded all Responses')}`);
 
             console.log(`\n${chalk.gray('[INFO]')} >> ${chalk.hex('ff4fd0')(`Client refresh successful`)}\n`);
 

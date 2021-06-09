@@ -30,6 +30,7 @@ module.exports = {
         if (!args.length) {return message.channel.send(`Syntax: \`${prefix}afk [clearMode] <reason>\``);}
         let reason = args.join(" ");
         if (reason.length > 150) {return message.reply("That status a bit long; keep it under 150 characters.");}
+        if (reason.match(/<@&\d+>|@everyone/gm)) {return message.reply("I won't ping any roles or @ everyone!");}
         tu.statustype = 'afk';
         tu.statusmsg = reason.trim();
         tu.statussetat = new Date();
