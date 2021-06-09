@@ -6,7 +6,7 @@ const makeId = require('../../util/makeid');
 module.exports = {
     name: "handhold",
     help: "Hold someone's hand with `{{p}}handhold @person`",
-    aliases: ['hh', 'holdhands', 'holdhandswith'],
+    aliases: ['hh', 'holdhands', 'holdhandswith', 'fuck'],
     meta: {
         category: 'Social',
         description: "Hold someone's hand to let them know you're there for them",
