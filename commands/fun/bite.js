@@ -8,11 +8,11 @@ const makeId = require('../../util/makeid');
 module.exports = {
     name: "bite",
     aliases: [],
-    help: "Use `{{p}}slap @person` to have me personally deliver your anger to them with a nice s l a p.",
+    help: "Use `{{p}}bite @person` to... bite someone.",
     meta: {
         category: 'Fun',
-        description: "Slap another user! Virtually, of course.",
-        syntax: '`slap <@user>`',
+        description: "Bite someone. Kinda kinky ngl",
+        syntax: '`bite <@user>`',
         extra: null
     },
     async execute(message, msg, args, cmd, prefix, mention, client) {
