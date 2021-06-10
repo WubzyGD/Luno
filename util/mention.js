@@ -14,7 +14,7 @@ module.exports = async(message, msg, args, cmd, prefix, mention, client) => {
         client.misc.statusPings.get(message.guild.id).set(mention.id, new Date());
         let m = await message.channel.send(new Discord.MessageEmbed()
             .setAuthor(mention.tag, mention.avatarURL())
-            .setDescription(`That user ${tu.statustype === 'dnd' ? 'wishes not to be disturbed' : 'is AFK'}. Reason: ${tu.statusmsg}.${tu.statussetat ? ` \`(This status was set ${moment(tu.statussetat.getTime()).fromNow()})\`` : ''}`)
+            .setDescription(`That user ${tu.statustype === 'dnd' ? 'wishes not to be disturbed' : 'is AFK'}. Reason: ${tu.statusmsg}.${tu.statussetat ? `\n\n(This status was set ${moment(tu.statussetat.getTime()).fromNow()})` : ''}`)
             .setColor('328ba8')
         );
         await require('../util/wait')(10000);
