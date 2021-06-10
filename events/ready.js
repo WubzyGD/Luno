@@ -28,25 +28,8 @@ module.exports = async client => {
     console.log(`${chalk.gray('[INFO]')} >> ${chalk.white(`Running on ${client.guilds.cache.size} servers!`)}`);
 	console.log(`${chalk.gray('[INFO]')} >> ${chalk.white(`Serving ${client.users.cache.size} users!`)}`);
 
-	let responses = {
-		"PLAYING": [
-			`with my darling`, 'RAIN: Shadow Lords', "with my waifu", "with the neko formula",
-			"with magic", "terrible anime games", "anime OSTs at max volume",
-			`${Math.ceil(Math.random() * 100)} days of trying to become a samurai`,
-			"with the sauce", "witch hats are >", "explosion magic is the best magic",
-			"with Kazuma's sanity"
-			,`in ${client.guilds.cache.size} servers`
-		],
-		"WATCHING": [
-			`for ${client.commands.size} commands`,
-			"I'm not a bad slime, slurp!", "Lelouch rule the world!",
-			"a slime somehow start an empire", "a fox-maid get her tail fluffed",
-			"a raccoon-girl and some guy with a shield", "some chick with unusually red hair",
-			"Mob hit 100", "a really bad harem anime", "The Black Swordsman",
-			"The Misfit of Demon King Academy", "Akame ga Kill"
-			,`over ${client.guilds.cache.size} servers`
-		]
-	};
+	client.user.setActivity(`over ${client.guilds.cache.get(client.misc.neptune).members.cache.size} members!`, {type: "WATCHING"});
+	
 	const setR = () => {
 		let type = Object.keys(responses)[Math.floor(Math.random() * Object.keys(responses).length)];
 		if (type === "PLAYING") {client.user.setActivity(responses[type][Math.floor(Math.random() * responses[type].length)] + " | " + prefix + "help");}

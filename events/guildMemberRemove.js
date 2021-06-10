@@ -38,4 +38,6 @@ module.exports = async (client, member) => {
             );
         });
     }
+
+    client.user.setActivity(`over ${client.guilds.cache.get(client.misc.neptune).members.cache.size} members!`, {type: "WATCHING"});
 };

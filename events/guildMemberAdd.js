@@ -16,4 +16,6 @@ module.exports = async (client, member) => {
     ) {
         try {member.guild.channels.cache.get(tg.wch).send(await sendResponse(member, member.guild.channels.cache.get(tg.wch), 'xdlol', client, tr.responses.get(tr.bindings.get('welcome'))));} catch {}
     }
+
+    client.user.setActivity(`over ${client.guilds.cache.get(client.misc.neptune).members.cache.size} members!`, {type: "WATCHING"});
 };
