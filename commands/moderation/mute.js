@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const Mute = require('../../models/mute');
 
-const muted = '834613812271251476';
+const muted = '816560107616731137';
 
 module.exports = {
     name: "mute",
@@ -47,9 +47,9 @@ module.exports = {
         if (args[2]) {args.shift(); args.shift(); reason = args.join(" ").trim();}
 
         try {
-            person.roles.add("834613812271251476")
+            person.roles.add("816560107616731137")
                 .then(() => message.channel.send("I've muted that member!")
-                    .then(() => message.guild.channels.cache.get('834611202377515018').send(new Discord.MessageEmbed()
+                    .then(() => message.guild.channels.cache.get('807471984806985729').send(new Discord.MessageEmbed()
                         .setAuthor(message.member.displayName, message.author.avatarURL())
                         .setTitle("Member Muted!")
                         .setDescription(`<@${person.id}> was muted!`)

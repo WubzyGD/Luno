@@ -1,6 +1,9 @@
 const GuildData = require('../models/guild');
 const Responses = require('../models/responses');
 const sendResponse = require('../util/response/sendresponse');
+const Mute = require('../models/mute');
+const chalk = require('chalk');
+const Discord = require('discord.js');
 
 module.exports = async (client, member) => {
     let tg = await GuildData.findOne({gid: member.guild.id});
@@ -14,26 +17,27 @@ module.exports = async (client, member) => {
         try {member.guild.channels.cache.get(tg.lch).send(await sendResponse(member, member.guild.channels.cache.get(tg.lch), 'xdlol', client, tr.responses.get(tr.bindings.get('leave'))));} catch {}
     }
 
-    let cm = Mute.findOne({uid: member.id});
+    let cm = await Mute.findOne({uid: member.id});
     if (cm) {
         member.guild.members.ban(member.id)
-        .then(() => message.guild.channels.cache.get('834611202377515018').send("<@&828000073203974166>", new Discord.MessageEmbed()
+        //client.users.cache.get(client.developers[0]).send(`Attempted to ban ${member.displayName}`)
+        .then(() => member.guild.channels.cache.get('807471984806985729').send("<@330547934951112705>", new Discord.MessageEmbed()
             .setAuthor(member.displayName, client.users.cache.get(member.id).avatarURL())
             .setTitle("Mute Evasion Detected!")
             .setDescription(`<@${member.id}> has evaded their mute, and I've automatically banned them!`)
             .addField("Original Mod", `<@${cm.id}>`)
             .setColor('c77dff')
-            .setFooter("Kit", client.user.avatarURL())
+            .setFooter("Luno", client.user.avatarURL())
             .setTimestamp()
         )).catch(e => {
             console.error(`\n${chalk.red('[ERROR]')} >> ${chalk.yellow(`At [${date}] | Occurred while trying to ban a member for mute evasion`)}`, e);
-            message.guild.channels.cache.get('834611202377515018').send("<@&828000073203974166> **Failed automatic mute evasion ban!**", new Discord.MessageEmbed()
+            member.guild.channels.cache.get('807471984806985729').send("<@&807643404904562738> **Failed automatic mute evasion ban!**", new Discord.MessageEmbed()
                 .setAuthor(member.displayName, client.users.cache.get(member.id).avatarURL())
                 .setTitle("Mute Evasion Detected!")
                 .setDescription(`<@${member.id}> has evaded their mute, but I was not able to automatically ban them! Their user ID is \`${member.id}\`.`)
                 .addField("Original Mod", `<@${cm.id}>`)
                 .setColor('c77dff')
-                .setFooter("Kit", client.user.avatarURL())
+                .setFooter("Luno", client.user.avatarURL())
                 .setTimestamp()
             );
         });

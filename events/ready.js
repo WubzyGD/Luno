@@ -50,10 +50,10 @@ module.exports = async client => {
 	        if (ct >= client.misc.cache.mute.get(mute)) {
 				if (client.guilds.cache.get(client.misc.neptune).members.cache.has(mute)) {
 					let mutedata = await Mute.findOne({uid: mute});
-					client.guilds.cache.get(client.misc.neptune).members.cache.get(mute).roles.remove('834613812271251476')
+					client.guilds.cache.get(client.misc.neptune).members.cache.get(mute).roles.remove('816560107616731137')
 						.then(() => {
 							let muten = client.guilds.cache.get(client.misc.neptune).members.cache.get(mute).displayName;
-							client.guilds.cache.get(client.misc.neptune).channels.cache.get('834611202377515018').send(new Discord.MessageEmbed()
+							client.guilds.cache.get(client.misc.neptune).channels.cache.get('807471984806985729').send(new Discord.MessageEmbed()
 								.setTitle("Member Automatically Unmuted")
 								.setDescription(`<@${mute}>${muten.endsWith('s') ? "'" : "'s"} mute time has ended, and I've unmuted them.`)
 								.addField("Muting Moderator", `<@${mutedata.mutedBy}>`, true)
