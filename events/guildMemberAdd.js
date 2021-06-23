@@ -1,6 +1,7 @@
 const GuildData = require('../models/guild');
 const Responses = require('../models/responses');
 const sendResponse = require('../util/response/sendresponse');
+const Discord = require("discord.js");
 
 const moment = require('moment');
 require('moment-precise-range-plugin');
