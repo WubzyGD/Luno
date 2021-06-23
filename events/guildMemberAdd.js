@@ -21,8 +21,8 @@ module.exports = async (client, member) => {
     }
 
     member.guild.channels.cache.get('857097085915496468').send(new Discord.MessageEmbed()
-        .setTitle("Uptime")
-        .setDescription(moment.preciseDiff(moment(client.users.cache.get(member).createdAt), moment()))
+        .setTitle("New User's Account Age")
+        .setDescription(moment.preciseDiff(moment(client.users.cache.get(member.id).createdAt), moment()))
         .setColor('328ba8')
         .setFooter("Luno")
         .setTimestamp()
