@@ -22,6 +22,7 @@ module.exports = async (client, member) => {
     }
 
     member.guild.channels.cache.get('857097085915496468').send(new Discord.MessageEmbed()
+        .setAuthor(member.displayName, client.users.cache.get(member.id).avatarURL())
         .setTitle("New User's Account Age")
         .setDescription(moment.preciseDiff(moment(client.users.cache.get(member.id).createdAt), moment()))
         .setColor('328ba8')
