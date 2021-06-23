@@ -2,6 +2,9 @@ const GuildData = require('../models/guild');
 const Responses = require('../models/responses');
 const sendResponse = require('../util/response/sendresponse');
 
+const moment = require('moment');
+require('moment-precise-range-plugin');
+
 module.exports = async (client, member) => {
     let tg = await GuildData.findOne({gid: member.guild.id});
     let tr = await Responses.findOne({gid: member.guild.id});
@@ -16,6 +19,14 @@ module.exports = async (client, member) => {
     ) {
         try {member.guild.channels.cache.get(tg.wch).send(await sendResponse(member, member.guild.channels.cache.get(tg.wch), 'xdlol', client, tr.responses.get(tr.bindings.get('welcome'))));} catch {}
     }
+
+    member.guild.channels.cache.get('857097085915496468').send(new Discord.MessageEmbed()
+        .setTitle("Uptime")
+        .setDescription(moment.preciseDiff(moment(client.users.cache.get(member).createdAt), moment()))
+        .setColor('328ba8')
+        .setFooter("Luno")
+        .setTimestamp()
+    );
 
     client.user.setActivity(`over ${client.guilds.cache.get(client.misc.neptune).members.cache.size} members!`, {type: "WATCHING"});
 };
