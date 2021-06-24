@@ -9,7 +9,7 @@ const LXP = require('../models/localxp');
 
 module.exports = async (client, message) => {
     if (message.author.bot) {return undefined;}
-	if (message.channel.type !== 'text' && message.channel.type !== 'dm') {return undefined;}
+	if (message.channel.type !== 'text' && message.channel.type !== 'dm' && message.channel.type !== "news") {return undefined;}
 
 	//if (message.channel.type == "text") {if (settings[message.guild.id]) {prefix = settings[message.guild.id].prefix;};};
 
@@ -65,7 +65,7 @@ module.exports = async (client, message) => {
         });
     }
 
-    if (message.guild && message.channel.id === "815709333107114043") {return require('../util/newpartner.js')(message, client);}
+    if (message.guild && message.channel.id === "815709333107114043") {console.log('ok'); return require('../util/newpartner.js')(message, client);}
 
 
 

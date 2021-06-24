@@ -17,7 +17,7 @@ module.exports = {
         function incl(ml, s) {let tm; for (tm of ml) {if (inc(tm, s)) {return true;}}}
 
         if (incl(["thanks luno", "thank you luno", "ty luno"])) {
-            const r = ["Anything for my favorite femboy ;)", "Anytime Crescent ;)", "Gee I sure hope I'm not stealing your love for ang... or do I?"];
+            const r = ["Anything for my favorite femboy ;)", "Anytime Crescent ;)"];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
 
