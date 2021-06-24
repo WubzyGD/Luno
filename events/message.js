@@ -65,7 +65,7 @@ module.exports = async (client, message) => {
         });
     }
 
-    if (message.guild && message.channel.id === "815709333107114043") {console.log('ok'); return require('../util/newpartner.js')(message, client);}
+    if (message.guild && message.channel.id === "815709333107114043") {return require('../util/newpartner.js')(message, client);}
 
 
 
