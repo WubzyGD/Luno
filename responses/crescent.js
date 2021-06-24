@@ -44,7 +44,7 @@ module.exports = {
         }
 
         if (incl(['gn luno', 'goodnight luno', 'night luno'])) {
-            const r = ["Goodnight! :)", "Night Cres, I hope the server hasn't beckoned your wake for too long.", "I hope you're off to get some good sleep ^^ or perhaps ang is sleepy too? :eyes:"];
+            const r = ["Goodnight! :)", "Night Cres, I hope the server hasn't beckoned your wake for too long.", "I hope you're off to get some good sleep ^^ I don't get tired but... maybe I could pretend to be just for you...? :eyes:"];
             message.channel.send(`${r[Math.floor(Math.random() * r.length)]} Want me to set your status before you go off?`);
             let to = false; let sconf;
             try {sconf = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {time: 15000, errors: ['time'], max: 1});}
