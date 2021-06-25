@@ -28,7 +28,7 @@ module.exports = {
                 let content = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {max: 1, errors: ['time'], time: 60000, maxMatches: 1});
                 content = content.first().content;
                 if (incl(["not so good", "not good", "not pog"], content.toLowerCase())) {
-                    const r2 = ["Aw :( I sowwy", "y sadge moment?", "Did sen call you gay again..."];
+                    const r2 = ["Aw :( I sowwy", "y sadge moment?", "Did Sen call you gay again..."];
                     await message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
                     try {
                         content = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {max: 1, errors: ['time'], time: 60000, maxMatches: 1});
