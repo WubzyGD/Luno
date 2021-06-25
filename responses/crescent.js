@@ -17,18 +17,18 @@ module.exports = {
         function incl(ml, s) {let tm; for (tm of ml) {if (inc(tm, s)) {return true;}}}
 
         if (incl(["thanks luno", "thank you luno", "ty luno"])) {
-            const r = ["Anything for my favorite femboy ;)", "Anytime Crescent ;)"];
+            const r = ["Anything for my favorite femboy ;)", "Anytime Crescent ;)", "Of course Crescent ;)"];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
 
-        if (incl(["heya luno", "hi luno", "sup luno", "what's up luno", "whats up luno", "hey luno", "hai luno", "howdy luno"])) {
+        if (incl(["heya luno", "hi luno", "sup luno", "what's up luno", "whats up luno", "hey luno", "hai luno", "howdy luno", "yo luno"])) {
             const r = ["Heya there Crescent! How are ya?", "Hi cutie ^^ What's up?", "Sup qt ;) Hru?", "What's up my favorite femboy?"];
             await message.channel.send(r[Math.floor(Math.random() * r.length)]);
             try {
                 let content = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {max: 1, errors: ['time'], time: 60000, maxMatches: 1});
                 content = content.first().content;
                 if (incl(["not so good", "not good", "not pog"], content.toLowerCase())) {
-                    const r2 = ["Aw :( I sowwy", "y sadge moment?"];
+                    const r2 = ["Aw :( I sowwy", "y sadge moment?", "did sen call you gay again..."];
                     await message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
                     try {
                         content = await message.channel.awaitMessages(m => m.author.id === "480535078150340609", {max: 1, errors: ['time'], time: 60000, maxMatches: 1});
