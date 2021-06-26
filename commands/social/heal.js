@@ -4,13 +4,13 @@ const UserData = require('../../models/user');
 const makeId = require('../../util/makeid');
 
 module.exports = {
-    name: "revive",
-    help: "Revive a dead person with `{{p}}revive @person`!",
-    aliases: ['revive'],
+    name: "heal",
+    help: "Heal somebody in need with `{{p}}heal @person`!",
+    aliases: ['heal'],
     meta: {
         category: 'Social',
-        description: "Revive a fallen comrade!",
-        syntax: '`revive <@user>`',
+        description: "Heal an injured comrade!",
+        syntax: '`heal <@user>`',
         extra: null
     },
     async execute(message, msg, args, cmd, prefix, mention, client) {
@@ -19,22 +19,22 @@ module.exports = {
         if (!args.length) {
             let name = message.guild ? message.member.displayName : message.author.username;
             return message.channel.send(message.guild ? new Discord.MessageEmbed()
-                    .setTitle(`${name} needs a revive!`)
+                    .setTitle(`${name} needs healing!`)
                     .setThumbnail(message.author.avatarURL({size: 2048}))
-                    .setDescription(`Raise someone from the dead with \`${prefix}revive @${name}\`!`)
+                    .setDescription(`Lend them some help with \`${prefix}heal @${name}\`!`)
                     .setColor('ffc0cb')
                     .setFooter('Luno', client.user.avatarURL())
                     .setTimestamp()
-                : "Can't revive someone that can never die."
+                : "I am immortal, I don't need healing."
             );}
         if (mention && args[0].match(/^<@(?:!?)(?:\d+)>$/)) {
-            if (!message.guild) {return message.reply("Can't revive someone that can never die.");}
+            if (!message.guild) {return message.reply("I am immortal, I don't need healing.");}
             if (!message.guild.members.cache.has(mention.id)) {return message.reply("It's too late..they're already gone to a better place..");}
             if (message.author.id === mention.id) {return message.reply("You can't heal yourself because....I SAID SO");}
             let name = message.guild ? message.member.displayName : message.author.username;
             let uname = message.guild.members.cache.get(mention.id).displayName;
             return message.channel.send(new Discord.MessageEmbed()
-                .setAuthor(`${message.guild ? message.member.displayName : message.author.username} revives ${message.guild.members.cache.get(mention.id).displayName} from the dead!`, message.author.avatarURL())
+                .setAuthor(`${message.guild ? message.member.displayName : message.author.username} heals ${message.guild.members.cache.get(mention.id).displayName}!`, message.author.avatarURL())
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
                 .setColor('ffc0cb')
             );
