@@ -34,7 +34,7 @@ module.exports = {
             let name = message.guild ? message.member.displayName : message.author.username;
             let uname = message.guild.members.cache.get(mention.id).displayName;
             return message.channel.send(new Discord.MessageEmbed()
-                .setAuthor(`${message.guild ? message.member.displayName : message.author.username} holds ${uname.endsWith('s') ? `${uname}'` : `${uname}'s`} hand!`, message.author.avatarURL())
+                .setAuthor(`${message.guild ? message.member.displayName : message.author.username} winks at ${message.guild.members.cache.get(mention.id).displayName}!`, message.author.avatarURL())
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
                 .setColor('8a2be2')
             );
