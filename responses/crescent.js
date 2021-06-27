@@ -20,6 +20,11 @@ module.exports = {
             const r = ["Anything for my favorite femboy ;)", "Anytime Crescent ;)", "Of course Crescent ;)"];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
+        
+        if (incl(["fuck off luno", "shut up luno", "fuck you luno"])) {
+            const r = ["I was only trying to help Crescent..", "Someones in a bad mood..", "I will peg you.", "I just wanted to make you happy Cres :("];
+            return message.channel.send(r[Math.floor(Math.random() * r.length)]);
+        }       
 
         if (incl(["heya luno", "hi luno", "sup luno", "what's up luno", "whats up luno", "hey luno", "hai luno", "howdy luno", "yo luno"])) {
             const r = ["Heya there Crescent! How are ya?", "Hi cutie ^^ What's up?", "Sup qt ;) Hru?", "What's up my favorite femboy?"];
