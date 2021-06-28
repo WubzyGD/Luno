@@ -20,7 +20,12 @@ module.exports = {
             const r = ["Anything for my favorite femboy ;)", "Anytime Crescent ;)", "Of course Crescent ;)"];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
-        
+
+        if (incl(["luno i'm horny", "I'm horny luno", "Fuck me luno", "Luno fuck me"])) {
+            const r = ["Maybe we should go to dms for a bit..;)", "N-not right now cres!", "This is an SFW server Cres, you know that.", "Sorry, not in the mood...", "Can't we just cuddle for once?"];
+            return message.channel.send(r[Math.floor(Math.random() * r.length)]);
+        } 
+
         if (incl(["fuck off luno", "shut up luno", "fuck you luno"])) {
             const r = ["I was only trying to help Crescent..", "Someone's in a bad mood..", "I will peg you.", "I just wanted to make you happy Cres :("];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
@@ -45,13 +50,9 @@ module.exports = {
                     const r2 = ["That's good to hear qt ^^", "Me too!", ":) Glad to know my favorite femboy is doing well!"];
                     return message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
                 }
-                     } catch {}
-                }
-                if (content.toLowerCase().includes("horny")) {
-                    const r2 = ["O-oh..are you now..?", "Maybe we should go to dms for a bit ;)", "Stop. This is an SFW server Cres, you know that."];
-                    return message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
-                }
-            
+            } catch {}
+        }
+                
         if (incl(['gn luno', 'goodnight luno', 'night luno'])) {
             const r = ["Goodnight! :)", "Night Cres, I hope the server hasn't beckoned your wake for too long.", "I hope you're off to get some good sleep ^^ I don't get tired but... maybe I could pretend to be just for you...? :eyes:"];
             message.channel.send(`${r[Math.floor(Math.random() * r.length)]} Want me to set your status before you go off?`);
