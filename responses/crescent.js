@@ -47,7 +47,7 @@ module.exports = {
                 }
                      } catch {}
                 }
-                if (content.toLowerCase().includes("good")) {
+                if (content.toLowerCase().includes("horny")) {
                     const r2 = ["O-oh..are you now..?", "Maybe we should go to dms for a bit ;)", "Stop. This is an SFW server Cres, you know that."];
                     return message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
                 }
