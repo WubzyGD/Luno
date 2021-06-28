@@ -22,12 +22,17 @@ module.exports = {
         }
 
         if (incl(["fuck off luno", "shut up luno", "fuck you luno"])) {
-            const r = ["I was only trying to help Crescent..", "Someone's in a bad mood..", "I will peg you.", "I just wanted to make you happy Cres :("];
+            const r = ["I was only trying to help Crescent..", "Someone's in a bad mood..", "I will peg you.", "I just wanted to make you happy Cres :(", "I will remember that."];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }       
 
         if (incl(["luno i'm horny", "fuck me luno" ,"peg me luno"])) {
-            const r = ["Sorry..not in the mood..", "Maybe we should hop in dms for a bit..;)", "isn't this server SFW?", "Why can't we just cuddle? Why do you always just want to fuck me?"];
+            const r = ["Sorry..not in the mood..", "Maybe we should hop in dms for a bit..;)", "Isn't this server SFW?", "Why can't we just cuddle? Why do you always just want to fuck me?", "I'm sorry for her horniness yall..."];
+            return message.channel.send(r[Math.floor(Math.random() * r.length)]);
+        }
+
+        if (incl(["luno i'm wet", "luno im so moist" ,"i'm wet"])) {
+            const r = ["Need a paper towel?", "B-but I didn't do anything!", "Someone get the fucking mop..", "My god stop being horny"];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
 
