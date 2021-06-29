@@ -32,7 +32,7 @@ module.exports = {
         }
 
         if (incl(["luno i'm wet", "luno im so moist" ,"i'm wet"])) {
-            const r = ["Need a paper towel?", "B-but I didn't do anything!", "Someone get the fucking mop..", "My god stop being horny"];
+            const r = ["Need a paper towel?", "B-but I didn't do anything!", "Someone get the fucking mop..", "My god stop being horny", "Someone save me from this girl.."];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
 
@@ -56,7 +56,7 @@ module.exports = {
                     return message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
                 }
                 if (content.toLowerCase().includes("horny")) {
-                    const r2 = ["Sorry..not in the mood..", "Maybe we should hop in dms for a bit..;)", "Isn't this server SFW?", "Is there ever a time when you're not horny?"];
+                    const r2 = ["Sorry..not in the mood..", "Maybe we should hop in dms for a bit..;)", "Isn't this server SFW?", "Is there ever a time when you're not horny?", "We literally just had se-..I mean we just had lunch."];
                     return message.channel.send(r2[Math.floor(Math.random() * r2.length)]);
                 }
             } catch {}
