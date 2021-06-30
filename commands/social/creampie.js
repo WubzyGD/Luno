@@ -36,7 +36,7 @@ module.exports = {
             return message.channel.send(new Discord.MessageEmbed()
                 .setAuthor(`${message.guild ? message.member.displayName : message.author.username} gives a massive creampie to ${message.guild.members.cache.get(mention.id).displayName}..Tasty!`, message.author.avatarURL())
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
-                .setColor('bb0a1e')
+                .setColor('fffdd0')
             );
         }
         if (['s', 'save', 'n', 'new', 'a', 'add'].includes(args[0].toLowerCase())) {
