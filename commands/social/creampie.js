@@ -19,7 +19,7 @@ module.exports = {
         if (!args.length) {return message.channel.send(new Discord.MessageEmbed()
             .setTitle(`${message.guild ? message.member.displayName : message.author.username} gave out a massive creampie!`)
             .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
-            .setColor('00cd00')
+            .setColor('fffdd0')
         );}
         if (['s', 'save', 'n', 'new', 'a', 'add'].includes(args[0].toLowerCase())) {
             if (!args[1]) {return message.channel.send('oi there cunt, give me a link of an image to add!');}
