@@ -42,7 +42,7 @@ module.exports = {
                 .setDescription(`You've kissed them **${kiss.against[mention.id] === 1 ? 'once' : `${kiss.against[mention.id]} times!`}**`)
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
                 .setColor('ac0f0f')
-                .setFooter(`${kiss.total} kisses${kiss.total === 1 ? '' : 's'} total`)
+                .setFooter(`${kiss.total} kisse${kiss.total === 1 ? '' : 's'} total`)
             );
         }
         if (['s', 'save', 'n', 'new', 'a', 'add'].includes(args[0].toLowerCase())) {
