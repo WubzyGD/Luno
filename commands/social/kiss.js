@@ -41,7 +41,7 @@ module.exports = {
                 .setAuthor(`${message.guild ? message.member.displayName : message.author.username} gives ${message.guild.members.cache.get(mention.id).displayName} a kiss!`, message.author.avatarURL())
                 .setDescription(`You've kissed them **${kiss.against[mention.id] === 1 ? 'once' : `${kiss.against[mention.id]} times!`}**`)
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
-                .setColor('52c7bb')
+                .setColor('ac0f0f')
                 .setFooter(`${kiss.total} kiss${kiss.total === 1 ? '' : 's'} total`)
             );
         }
