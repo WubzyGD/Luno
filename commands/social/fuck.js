@@ -39,10 +39,10 @@ module.exports = {
             fuck.save();
             return message.channel.send(new Discord.MessageEmbed()
                 .setAuthor(`${message.guild ? message.member.displayName : message.author.username} bangs ${message.guild.members.cache.get(mention.id).displayName}!...Kinky! `, message.author.avatarURL())
-                .setDescription(`You've banged them **${fuck.against[mention.id] === 1 ? 'once' : `${hugs.against[mention.id]} times!`}**`)
+                .setDescription(`You've banged them **${fuck.against[mention.id] === 1 ? 'once' : `${fuck.against[mention.id]} times!`}**`)
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
                 .setColor('dda0dd')
-                .setFooter(`${hugs.total} fuck${fuck.total === 1 ? '' : 's'} total`)
+                .setFooter(`${fuck.total} fuck${fuck.total === 1 ? '' : 's'} total`)
             );
         }
         if (['s', 'save', 'n', 'new', 'a', 'add'].includes(args[0].toLowerCase())) {
