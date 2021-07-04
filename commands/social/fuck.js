@@ -16,7 +16,7 @@ module.exports = {
         extra: null
     },
     async execute(message, msg, args, cmd, prefix, mention, client) {
-        let savess = await Saves.findOne({name: 'handhold'}) ? await Saves.findOne({name: 'handhold'}) : new Saves({name: 'handhold'});
+        let savess = await Saves.findOne({name: 'fuck'}) ? await Saves.findOne({name: 'fuck'}) : new Saves({name: 'fuck'});
         let saves = savess.saves;
         if (!args.length) {
             return message.channel.send(message.guild ? new Discord.MessageEmbed()
