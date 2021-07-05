@@ -8,6 +8,7 @@ const makeId = require('../../util/makeid');
 
 module.exports = {
     name: "hug",
+    aliases: ['hug', "snuggle", "cuddle"],
     help: "Tell others that you need a hug with `{{p}}hug`, or give one by mentioning someone to hug!",
     meta: {
         category: 'Social',
