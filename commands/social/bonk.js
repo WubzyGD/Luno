@@ -39,7 +39,7 @@ module.exports = {
             bonk.save();
             return message.channel.send(new Discord.MessageEmbed()
                 .setAuthor(`${message.guild ? message.member.displayName : message.author.username} bonks ${message.guild.members.cache.get(mention.id).displayName}!...ouch! `, message.author.avatarURL())
-                .setDescription(`You've bonked them **${fuck.against[mention.id] === 1 ? 'once' : `${fuck.against[mention.id]} times!`}**`)
+                .setDescription(`You've bonked them **${bonk.against[mention.id] === 1 ? 'once' : `${bonk.against[mention.id]} times!`}**`)
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
                 .setColor('dda0dd')
                 .setFooter(`${fuck.total} bonks${fuck.total === 1 ? '' : 's'} total`)
