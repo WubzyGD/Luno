@@ -42,7 +42,7 @@ module.exports = {
                 .setDescription(`You've bonked them **${bonk.against[mention.id] === 1 ? 'once' : `${bonk.against[mention.id]} times!`}**`)
                 .setImage(String(Array.from(saves.values())[Math.floor(Math.random() * saves.size)]))
                 .setColor('dda0dd')
-                .setFooter(`${fuck.total} bonks${fuck.total === 1 ? '' : 's'} total`)
+                .setFooter(`${bonk.total} bonks${bonk.total === 1 ? '' : 's'} total`)
             );
         }
         if (['s', 'save', 'n', 'new', 'a', 'add'].includes(args[0].toLowerCase())) {
