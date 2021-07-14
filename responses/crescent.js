@@ -31,7 +31,7 @@ module.exports = {
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
 
-        if (incl(["luno I'm wet", "luno I'm so moist" ,"I'm wet"])) {
+        if (incl(["luno I'm wet", "luno I'm so moist" ,"i'm wet"])) {
             const r = ["Need a paper towel?", "B-but I didn't do anything!", "Someone get the fucking mop..", "My god stop being horny", "Someone save me from this girl..", "Stop staring at my tail."];
             return message.channel.send(r[Math.floor(Math.random() * r.length)]);
         }
