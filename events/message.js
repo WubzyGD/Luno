@@ -6,6 +6,7 @@ const wait = require('../util/wait');
 const UserData = require('../models/user');
 const AR = require('../models/ar');
 const LXP = require('../models/localxp');
+const Monners = require('../models/monners');
 
 module.exports = async (client, message) => {
     if (message.author.bot) {return undefined;}
@@ -52,18 +53,26 @@ module.exports = async (client, message) => {
 	}
 
 	if (message.guild && client.misc.cache.lxp.enabled.includes(message.guild.id)) {
-	    LXP.findOne({gid: message.guild.id}).then(xp => {
+        if (!client.misc.cache.lxp.xp[message.guild.id] || !client.misc.cache.lxp.xp[message.guild.id][message.author.id]) {
+            let xp = await LXP.findOne({gid: message.guild.id});
             if (!client.misc.cache.lxp.xp[message.guild.id]) {client.misc.cache.lxp.xp[message.guild.id] = {};}
             if (!client.misc.cache.lxp.xp[message.guild.id][message.author.id]) {client.misc.cache.lxp.xp[message.guild.id][message.author.id] = {
                 xp: xp.xp[message.author.id] ? xp.xp[message.author.id][0] : 0,
                 level: xp.xp[message.author.id] ? xp.xp[message.author.id][1] : 1,
                 lastXP: new Date().getTime() - 60000
             };}
-            if (new Date().getTime() - client.misc.cache.lxp.xp[message.guild.id][message.author.id].lastXP > 60000) {
-                require('../util/lxp/gainxp')(client, message.member.id, message.channel);
-            }
-        });
+        }
+            
+        if (!client.misc.cache.monners[message.author.id]) {
+            let tmonners = await Monners.findOne({uid: message.author.id}) || new Monners({uid: message.author.id});
+            client.misc.cache.monners[message.author.id] = tmonners.currency;
+        }
+
+        if (new Date().getTime() - client.misc.cache.lxp.xp[message.guild.id][message.author.id].lastXP > 60000) {
+            require('../util/lxp/gainxp')(client, message.member.id, message.channel);
+        }
     }
+
 
     if (message.guild && message.channel.id === "815709333107114043") {return require('../util/newpartner.js')(message, client);}
 

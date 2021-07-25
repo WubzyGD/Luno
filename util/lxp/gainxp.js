@@ -4,6 +4,7 @@ const LR = require('../../models/levelroles');
 module.exports = async (client, member, channel) => {
     client.misc.cache.lxp.xp[channel.guild.id][member].lastXP = new Date().getTime();
     client.misc.cache.lxp.xp[channel.guild.id][member].xp += 10;
+    client.misc.cache.monners[member] += (Math.floor(client.misc.cache.lxp.xp[channel.guild.id][member].level / 25) + 1);
 
     let x = client.misc.cache.lxp.xp[channel.guild.id][member].level;
     let max = Math.ceil(100 + (((x / 2.85) ** 2.2) * 2.5));
@@ -17,7 +18,9 @@ module.exports = async (client, member, channel) => {
             try {
                 let ch = xp.lvch.length ? channel.guild.channels.cache.get(xp.lvch) : channel;
                 if (ch.partial) {await ch.fetch().catch(() => {});}
-                if (ch && ch.permissionsFor(ch.guild.me.id).has('SEND_MESSAGES')) {ch.send(`<:wew:835643715745087529> <@${member}> has reached **Level ${x + 1}**!`).catch((e) => {/*console.error(e)*/});}
+                let cur = ((Math.floor((x + 1) / 10) + 1) * 5);
+                client.misc.cache.monners[member] += cur;
+                if (ch && ch.permissionsFor(ch.guild.me.id).has('SEND_MESSAGES')) {ch.send(`<a:CF_moonheart:868653516913246208> <@${member}> has reached **Level ${x + 1}**, and gained **${cur}** bonus Mooners<a:CF_mooners:868652679717589012>!`).catch((e) => {/*console.error(e)*/});}
                 if (client.misc.cache.lxp.hasLevelRoles.includes(channel.guild.id)) {
                     LR.findOne({gid: channel.guild.id}).then(async lr => {
                         if (!lr) {return;}

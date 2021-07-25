@@ -23,7 +23,8 @@ client.misc = {
             xp: {},
             hasLevelRoles: []
         },
-        mute: new Map()
+        mute: new Map(),
+        monners: {}
     },
     loggers: {},
     neptune: '782727129414500374'
