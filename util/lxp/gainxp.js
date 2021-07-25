@@ -4,7 +4,7 @@ const LR = require('../../models/levelroles');
 module.exports = async (client, member, channel) => {
     client.misc.cache.lxp.xp[channel.guild.id][member].lastXP = new Date().getTime();
     client.misc.cache.lxp.xp[channel.guild.id][member].xp += 10;
-    client.misc.cache.monners[member] += (Math.floor(client.misc.cache.lxp.xp[channel.guild.id][member].level / 25) + 1);
+    client.misc.cache.monners[member] += (Math.floor(client.misc.cache.lxp.xp[channel.guild.id][member].level / 35) + 1);
 
     let x = client.misc.cache.lxp.xp[channel.guild.id][member].level;
     let max = Math.ceil(100 + (((x / 2.85) ** 2.2) * 2.5));
