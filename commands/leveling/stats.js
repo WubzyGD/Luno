@@ -28,7 +28,7 @@ module.exports = {
             if (!txp.xp[u.id]) {return message.channel.send(`${u.id === message.author.id ? "You" : "That user"} doesn't have any leveling info available!`);}
             xp = {xp: txp.xp[u.id][0], level: txp.xp[u.id][1]};
         } else {xp = client.misc.cache.lxp.xp[message.guild.id][u.id];}
-        let tmoon = await Monners.findOne({uid: u.id});
+        let tmoon = client.misc.cache.monners[u.id] ? {currency: client.misc.cache.monners[u.id]} : await Monners.findOne({uid: u.id});
         return message.channel.send(new Discord.MessageEmbed()
             .setTitle(`${u.displayName}${u.displayName.toLowerCase().endsWith('s') ? "'" : "'s"} Stats`)
             .setDescription("Local leveling stats")

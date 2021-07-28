@@ -64,8 +64,12 @@ module.exports = async (client, message) => {
         }
             
         if (!client.misc.cache.monners[message.author.id]) {
+            //console.log("\nMESSAGE/CACHE || User not cached: " + message.member.displayName);
             let tmonners = await Monners.findOne({uid: message.author.id}) || new Monners({uid: message.author.id});
+            //console.log(`MESSAGE/CACHE || Caching. User ${tmonners.currency ? chalk.greenBright('has') : chalk.redBright("doesn't have")} currency field.`)
+            //if (tmonners.currency) {console.log(`MESSAGE/CACHE || Found ${tmonners.currency} monners`);}
             client.misc.cache.monners[message.author.id] = tmonners.currency;
+            //console.log(`MESSAGE/CACHE || Cached ${client.misc.cache.monners[message.author.id]} monners`);
         }
 
         if (new Date().getTime() - client.misc.cache.lxp.xp[message.guild.id][message.author.id].lastXP > 60000) {

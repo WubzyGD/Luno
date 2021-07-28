@@ -4,7 +4,10 @@ const LR = require('../../models/levelroles');
 module.exports = async (client, member, channel) => {
     client.misc.cache.lxp.xp[channel.guild.id][member].lastXP = new Date().getTime();
     client.misc.cache.lxp.xp[channel.guild.id][member].xp += 10;
+    //console.log(`\nGAIN/PSV || Giving ${(Math.floor(client.misc.cache.lxp.xp[channel.guild.id][member].level / 35) + 1)} monners to ${client.guilds.cache.get(client.misc.neptune).members.cache.get(member).displayName} who is level ${client.misc.cache.lxp.xp[channel.guild.id][member].level}.`);
+    //console.log(`GAIN/PSV || Currently has ${client.misc.cache.monners[member]}`);
     client.misc.cache.monners[member] += (Math.floor(client.misc.cache.lxp.xp[channel.guild.id][member].level / 35) + 1);
+    //console.log(`GAIN/PSV || Now has ${client.misc.cache.monners[member]}`);
 
     let x = client.misc.cache.lxp.xp[channel.guild.id][member].level;
     let max = Math.ceil(100 + (((x / 2.85) ** 2.2) * 2.5));
@@ -14,12 +17,15 @@ module.exports = async (client, member, channel) => {
         client.misc.cache.lxp.xp[channel.guild.id][member].level += 1;
 
         LXP.findOne({gid: channel.guild.id}).then(async xp => {
+    
             if (!xp || !xp.msg) {return;}
             try {
                 let ch = xp.lvch.length ? channel.guild.channels.cache.get(xp.lvch) : channel;
                 if (ch.partial) {await ch.fetch().catch(() => {});}
+                //console.log(`\nGAIN/BONUS || Level ${x + 1} user ${client.guilds.cache.get(client.misc.neptune).members.cache.get(member).displayName} getting ${((Math.floor((x + 1) / 10) + 1) * 5)} bonus`);
                 let cur = ((Math.floor((x + 1) / 10) + 1) * 5);
                 client.misc.cache.monners[member] += cur;
+                //console.log(`GAIN/BONUS || Now has ${client.misc.cache.monners[member]}`);
                 if (ch && ch.permissionsFor(ch.guild.me.id).has('SEND_MESSAGES')) {ch.send(`<a:CF_moonheart:868653516913246208> <@${member}> has reached **Level ${x + 1}**, and gained **${cur}** bonus Mooners<a:CF_mooners:868652679717589012>!`).catch((e) => {/*console.error(e)*/});}
                 if (client.misc.cache.lxp.hasLevelRoles.includes(channel.guild.id)) {
                     LR.findOne({gid: channel.guild.id}).then(async lr => {
