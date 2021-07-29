@@ -21,6 +21,7 @@ module.exports = {
     },
     async execute(message, msg, args, cmd, prefix, mention, client) {
         if (!args.length) {
+            let timer = new Date().getTime();
             if (!client.developers.includes(message.author.id) && message.author.id !== "480535078150340609") {return message.channel.send("You must be a Luno developer in order to do this!");}
 
             let commands = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -66,7 +67,7 @@ module.exports = {
 
             console.log(`\n${chalk.gray('[INFO]')} >> ${chalk.hex('ff4fd0')(`Client refresh successful`)}\n`);
 
-            return message.channel.send("Done!")
+            return message.channel.send(`Done! Reloaded ${commands.length} commands, ${eventFilter.length} events, and ${responses.length} responses in ${new Date().getTime() - timer}ms.`);
         }
         if (['l', 'log', 'ns', 'nosilent', 'notsilent'].includes(args[0].toLowerCase())) {
             ['commands', 'aliases'].forEach(x => client[x] = new Discord.Collection());
@@ -74,6 +75,24 @@ module.exports = {
             ['command', 'event', 'response'].forEach(x => require(`./${x}`)(client));
             return message.channel.send("Done!");
         }
+
+        if (['c', 'cmd', 'command'].includes(args[0].toLowerCase())) {
+            let timer = new Date().getTime();
+            if (!args[1]) {return message.channel.send("Oi there you headass! You have to actually tell me what command to reload!");}
+            let tc = args[1].toLowerCase();
+            let lf = client.commands.get(tc) || client.commands.get(client.aliases.get(tc));
+            lf = lf ? lf.name : tc;
+            let res;
+            fs.readdirSync(`./commands`).forEach(x => {
+                if (!x.includes('.')) {fs.readdirSync(`./commands/${x}`).forEach(y => {if (`${lf}.js` === y) {res = `../../commands/${x}/${y}`;}});}
+                else {if (x === `${lf}.js`) {res = `../../commands/${x}`;}}
+            });
+            if (!res) {return message.channel.send("I can't reload that command as I can't find file!");}
+            if (require.resolve(res) in require.cache) {delete require.cache[require.resolve(res)];}
+            client.commands.set(lf, require(res));
+            return message.channel.send(`Reloaded command \`${lf}\` in ${new Date().getTime() - timer}ms`);
+        }
+
         else {return message.channel.send("Oi! 'log' is the only valid arg to use. Use no args if you want a cleaner console output instead.");}
     }
 };
