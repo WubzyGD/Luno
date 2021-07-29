@@ -73,6 +73,8 @@ module.exports = {
 
         clearDM();
 
+        let cfmsg = await dmch.send("One moment...");
+
         try {
             let mch = await client.fetchWebhook("869739554897285150", "o1igg02aB_rFNPbucnIe-ntN0gTsKYnC47NWYNQoFP536EliAQtqLuAFK6NQy1Wzr1_a");
             mch.send("<@&814668063366184960>", {
@@ -112,8 +114,8 @@ module.exports = {
                 ma.apps[message.author.id] = "Submitted";
                 ma.markModified(`apps.${message.author.id}`);
                 await ma.save();
-                return dmch.send("Your application has been submitted. Please be patient as we review the applications. Do not harrass any member of staff about the results of the apps or their progress. **You will be muted or banned.**");
-            }).catch((e) => {dmch.send("For some reason, your application was not submitted. Please contact WubzyGD#8766 **as soon as possible** to resolve this issue."); console.log(e);})
-        } catch (e) {console.log(e); return dmch.send("For some reason, your application was not submitted. Please contact WubzyGD#8766 **as soon as possible** to resolve this issue.");}
+                return cfmsg.edit("Your application has been submitted! Thank you for taking the time and effort to apply for staff here at **Crescent's Family**. Please be patient as we review the applications, and don't harrass any member of staff for the results or progress, as it makes it harder for everyone and slows down our progress. Thank you qt ^^ <a:CF_NekoNod:820187587057549343>");
+            }).catch((e) => {cfmsg.edit("For some reason, your application was not submitted. Please contact WubzyGD#8766 **as soon as possible** to resolve this issue."); console.log(e);})
+        } catch (e) {console.log(e); return cfmsg.edit("For some reason, your application was not submitted. Please contact WubzyGD#8766 **as soon as possible** to resolve this issue.");}
     }
 };
