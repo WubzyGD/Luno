@@ -36,8 +36,8 @@ module.exports = {
                 helpSorted[category] = categorySorted;
             }
 
-            let cat = await ask(message, "What would you like help with? (`Fun`|`Utility`|`Misc`|`Moderation`|`Social`|`Leveling`) or `all` if you'd like to browse all commands", 60000); if (!cat) {return;}
-            if (!['f', 'fun', 'u', 'util', 'utility', 'utilities', 'm', 'misc', 'miscellaneous', 'mod', 'moderation', 's', 'social', 'leveling', 'l', 'level', 'a', 'all'].includes(`${cat}`.trim().toLowerCase())) {return message.channel.send("That wasn't a valid response! Try again?");}
+            let cat = await ask(message, "What would you like help with? (`Fun`|`Utility`|`Misc`|`Moderation`|`Social`|`Leveling`|`Music`) or `all` if you'd like to browse all commands", 60000); if (!cat) {return;}
+            if (!['f', 'fun', 'u', 'util', 'utility', 'utilities', 'm', 'misc', 'miscellaneous', 'mod', 'moderation', 's', 'social', 'leveling', 'l', 'level', 'music', 'a', 'all'].includes(`${cat}`.trim().toLowerCase())) {return message.channel.send("That wasn't a valid response! Try again?");}
 
             let pages;
             if (['f', 'fun'].includes(`${cat}`.trim().toLowerCase())) {pages = helpSorted['Fun'];}
@@ -47,6 +47,7 @@ module.exports = {
             if (['mod', 'moderation'].includes(`${cat}`.trim().toLowerCase())) {pages = helpSorted['Moderation'];}
             if (['s', 'social'].includes(`${cat}`.trim().toLowerCase())) {pages = helpSorted['Social'];}
             if (['l', 'leveling', 'level'].includes(`${cat}`.trim().toLowerCase())) {pages = helpSorted['Leveling'];}
+            if (["music"].includes(`${cat}`.trim().toLowerCase())) {pages = helpSorted['Music'];}
             if (['a', 'all'].includes(`${cat}`.trim().toLowerCase())) {pages = []; let c; for (c of Object.values(helpSorted)) {let h; for (h of c) {pages.push(h)}}}
 
             await require('../../util/wait')(500);

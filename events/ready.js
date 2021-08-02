@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const moment = require('moment');
 const mongoose = require('mongoose');
 const ora = require('ora');
+const Lavalink = require('@lavacord/discord.js');
 
 const GuildSettings = require('../models/guild');
 const BotDataSchema = require('../models/bot');
@@ -78,6 +79,16 @@ module.exports = async client => {
 	await require('../util/cache')(client);
 
 	setInterval(() => localXPCacheClean(client), 150000);
+
+	client.lavacordManager = new Lavalink.Manager(client, client.config.lava.nodes, {user: client.user.id});
+	client.lavacordManager.on('error', (err, node) => {console.error(`\nAn error occurred on Lava node ${node.id}.`, err)});
+
+	await client.lavacordManager.connect()
+		.then(() => {
+			console.log(`${chalk.gray('\n[INFO]')} >> ${chalk.greenBright("Connected")} to Lavacord.`);
+			client.misc.lava = true;
+		})
+		.catch(e => {console.log(`${chalk.red('\n[ERROR]')} >> ${chalk.yellow("Occured while connecting to Lavacord:")}`); console.error(e);});
 
 	let botData = await BotDataSchema.findOne({finder: 'lel'})
 		? await BotDataSchema.findOne({finder: 'lel'})

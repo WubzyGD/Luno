@@ -27,7 +27,9 @@ client.misc = {
         monners: {}
     },
     loggers: {},
-    neptune: '782727129414500374'
+    neptune: '782727129414500374',
+    queue: {},
+    attemptedQueue: []
 };
 
 //const config = require('./config.js');
