@@ -99,7 +99,7 @@ module.exports = {
                 .addField("Length", moment.preciseDiff(Date.now(), Date.now() + song.info.length), true)
                 .addField("Songs in Queue", `**1** Song\n${moment.preciseDiff(Date.now(), Date.now() + song.info.length)}`)
                 .addField("Settings", `Volume: **${client.misc.queue[message.guild.id].volume}**/**150**`)
-                .setColor('2c328ba89cb0')
+                .setColor('328ba8')
                 .setFooter("Luno")
             );
             let reactions = ['⏯️', '⏭️', '⏹️', '🔁', '🔉', '🔊'];
