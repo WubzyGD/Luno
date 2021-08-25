@@ -7,7 +7,6 @@
     "dependencies": {
         "@lavacord/discord.js": "^0.0.7",
         "axios": "^0.21.1",
-        "canvas": "^2.6.1",
         "chalk": "^4.1.0",
         "dblapi.js": "^2.4.1",
         "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",

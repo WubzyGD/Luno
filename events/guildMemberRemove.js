@@ -17,6 +17,8 @@ module.exports = async (client, member) => {
         try {member.guild.channels.cache.get(tg.lch).send(await sendResponse(member, member.guild.channels.cache.get(tg.lch), 'xdlol', client, tr.responses.get(tr.bindings.get('leave'))));} catch {}
     }
 
+    if (member.guild.id === client.misc.alt) {return;}
+
     let cm = await Mute.findOne({uid: member.id});
     if (cm) {
         member.guild.members.ban(member.id)

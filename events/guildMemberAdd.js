@@ -21,6 +21,8 @@ module.exports = async (client, member) => {
         try {member.guild.channels.cache.get(tg.wch).send(await sendResponse(member, member.guild.channels.cache.get(tg.wch), 'xdlol', client, tr.responses.get(tr.bindings.get('welcome'))));} catch {}
     }
 
+    if (member.guild.id === client.misc.alt) {return;}
+
     member.guild.channels.cache.get('857097085915496468').send(new Discord.MessageEmbed()
         .setAuthor(member.displayName, client.users.cache.get(member.id).avatarURL())
         .setTitle("New User's Account Age")

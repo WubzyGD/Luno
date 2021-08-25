@@ -16,6 +16,7 @@ module.exports = {
     },
     help: "Apply for a moderation position here!",
     async execute(message, msg, args, cmd, prefix, mention, client) {
+        if ((message.guild && message.guild.id === client.misc.alt) || !client.guilds.cache.get(client.misc.neptune).members.cache.has(message.author.id)) {return message.channel.send("That command isn't available in this server *yet*");}
         let ma = await ModApp.findOne({gid: client.misc.neptune}) || new ModApp({gid: client.misc.neptune});
         if (!ma.enabled && !message.author.id === '330547934951112705') {return message.channel.send("Moderation applications are not currently open at this time! We'll announce when we're looking for mods, so keep your eyes peeled!");}
         if (ma.apps[message.author.id]) {return message.channel.send("Looks like you already have an application made! If you need it to be removed for some reason, contact WubzyGD.");};
